@@ -27,6 +27,11 @@
             <artifactId>swagger-annotations</artifactId>
             <version>1.6.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.hj</groupId>
+            <artifactId>common-util</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

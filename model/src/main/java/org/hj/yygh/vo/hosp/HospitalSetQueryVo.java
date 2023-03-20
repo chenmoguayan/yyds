@@ -1,11 +1,11 @@
-package org.hj.yygh.model.hosp;
+package org.hj.yygh.vo.hosp;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
  * @author hj
- * @data 2023/3/20 15:23
+ * @data 2023/3/20 16:28
  */
 @Data
 public class HospitalSetQueryVo {
