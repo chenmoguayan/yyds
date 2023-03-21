@@ -44,8 +44,7 @@ WARN，则低于WARN的信息都不会输出 -->
         <file>${log.path}/log_info.log</file>
         <!--日志文件输出格式-->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}
-                - %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
             </pattern>
             <charset>UTF-8</charset>
         </encoder>
@@ -75,8 +74,7 @@ WARN，则低于WARN的信息都不会输出 -->
         <file>${log.path}/log_warn.log</file>
         <!--日志文件输出格式-->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}
-                - %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
             </pattern>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>

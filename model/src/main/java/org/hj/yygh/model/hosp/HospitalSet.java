@@ -12,7 +12,7 @@ import org.hj.yygh.model.base.BaseEntity;
  * @data 2023/3/20 14:55
  */
 @Data
-@ApiModel(description = "医院设置")
+@ApiModel(value = "医院设置",description = "医院设置")
 @TableName("hospital_set")
 public class HospitalSet extends BaseEntity {
     private static final long serialVersionUID =1L;
