@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="service-dict" />
         <module name="model" />
         <module name="common-util" />
         <module name="service-util" />
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common-util" options="-parameters" />
       <module name="model" options="-parameters" />
+      <module name="service-dict" options="-parameters" />
       <module name="service-hospital" options="-parameters" />
       <module name="service-util" options="-parameters" />
     </option>

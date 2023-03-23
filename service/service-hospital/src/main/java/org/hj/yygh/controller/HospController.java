@@ -54,7 +54,7 @@ public class HospController {
     public Result findPageHospSet(@PathVariable long current,
                                   @PathVariable long limit,
                                   @RequestBody(required = false)HospitalSetQueryVo vo){
-        Page<HospitalSet> page = new Page<>();
+        Page<HospitalSet> page = new Page<>(current,limit);
         String hoscode = vo.getHoscode();
         String hosname = vo.getHosname();
         QueryWrapper wrapper = new QueryWrapper();
