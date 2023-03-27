@@ -19,7 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
 // 是否发送发送Cookie
                 .allowCredentials(true)
 // 允许的请求方式
-                .allowedMethods("GET", "POST","DELETE","PUT")
+                .allowedMethods("GET", "POST", "DELETE", "PUT")
 // 任何头信息
                 .allowedHeaders("*")
                 .maxAge(3600 * 24);

@@ -6,11 +6,10 @@ import org.hj.yygh.common.result.Result;
 import org.hj.yygh.dict.service.DictService;
 import org.hj.yygh.model.dict.Dict;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -29,5 +28,20 @@ public class DictController {
     public Result findChildrenData(@PathVariable Long id){
         List<Dict> childrenDataList = dictServiceImpl.findChildrenDataList(id);
         return Result.ok(childrenDataList);
+    }
+    /**
+     * 导出数据字典
+     */
+    @GetMapping("exportData")
+    public void exportData(HttpServletResponse response){
+        dictServiceImpl.exportExcel(response);
+    }
+    /**
+     * 导出数据字典
+     */
+    @PostMapping("importData")
+    public Result importData(MultipartFile file){
+        dictServiceImpl.importExcel(file);
+        return Result.ok();
     }
 }
