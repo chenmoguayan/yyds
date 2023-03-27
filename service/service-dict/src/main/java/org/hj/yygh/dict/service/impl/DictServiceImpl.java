@@ -1,12 +1,24 @@
 package org.hj.yygh.dict.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.hj.yygh.dict.listener.DictListener;
 import org.hj.yygh.dict.mapper.DictMapper;
 import org.hj.yygh.dict.service.DictService;
 import org.hj.yygh.model.dict.Dict;
+import org.hj.yygh.vo.dict.DictEeVo;
+import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +27,8 @@ import java.util.List;
  */
 @Service
 public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements DictService {
+
+    @Cacheable(value = "dict",keyGenerator = "keyGenerator")
     @Override
     public List<Dict> findChildrenDataList(Long id) {
         // 根据父id查询子数据
@@ -30,6 +44,70 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         }
         return dicts;
     }
+
+    @Override
+    public void exportExcel(HttpServletResponse response) {
+        try {
+            // 设置下载信息
+            response.setContentType("application/vnd.mapper");
+            response.setCharacterEncoding("UTF-8");
+            String fileName = URLEncoder.encode("数据字典", StandardCharsets.UTF_8);
+            // 设置头信息：以下载方式打开
+            response.setHeader("Content-disposition", "attachment;filename=" +
+                    fileName + ".xlsx");
+            List<Dict> dicts = baseMapper.selectList(null);
+
+            List<DictEeVo> dictEeVos = new ArrayList<>();
+
+            for (Dict dict : dicts) {
+                DictEeVo edv = new DictEeVo();
+                BeanUtils.copyProperties(dict, edv);
+                dictEeVos.add(edv);
+            }
+
+            EasyExcel.write(response.getOutputStream(), DictEeVo.class).sheet("数据字典").doWrite(dictEeVos);
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @CacheEvict(value = "dict",allEntries = true)
+    @Override
+    public void importExcel(MultipartFile file) {
+        try {
+            EasyExcel.read(file.getInputStream(),DictEeVo.class,new DictListener(baseMapper))
+                    .sheet()
+                    .doRead();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String getDictName(String dictCode, String value) {
+        if (StringUtils.hasLength(dictCode)){
+            Dict dict = this.getDictByDictCode(dictCode);
+            Long parentId = dict.getId();
+            Dict resultDict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("parent_id", parentId).eq("value", value));
+            return resultDict.getName();
+        }else {
+            return baseMapper.selectOne(new QueryWrapper<Dict>().eq("value", value)).getName();
+        }
+    }
+
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        Dict dict = getDictByDictCode(dictCode);
+        List<Dict> dictList = findChildrenDataList(dict.getId());
+        return dictList;
+    }
+
+
+    public Dict getDictByDictCode(String dictCode) {
+        return baseMapper.selectOne(new QueryWrapper<Dict>().eq("dict_code", dictCode));
+    }
+
     /**
      * 判断是否存在子数据
      */

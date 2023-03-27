@@ -23,10 +23,20 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.hj</groupId>
             <artifactId>common-util</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.hj</groupId>
+            <artifactId>service-dict-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

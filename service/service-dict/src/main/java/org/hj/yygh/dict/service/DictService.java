@@ -2,7 +2,9 @@ package org.hj.yygh.dict.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.hj.yygh.model.dict.Dict;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -12,4 +14,12 @@ import java.util.List;
 public interface DictService extends IService<Dict> {
     // 根据ID查询子数据
     List<Dict> findChildrenDataList(Long id);
+
+    void exportExcel(HttpServletResponse response);
+
+    void importExcel(MultipartFile file);
+
+    String getDictName(String dictCode, String value);
+
+    List<Dict> findByDictCode(String dictCode);
 }

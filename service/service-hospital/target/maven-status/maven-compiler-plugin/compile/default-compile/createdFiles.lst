@@ -1,6 +1,0 @@
-org\hj\yygh\config\HospConfig.class
-org\hj\yygh\service\HospService.class
-org\hj\yygh\service\impl\HospServiceImpl.class
-org\hj\yygh\controller\HospController.class
-org\hj\yygh\ServiceHospitalMainApp.class
-org\hj\yygh\mapper\HospMapper.class

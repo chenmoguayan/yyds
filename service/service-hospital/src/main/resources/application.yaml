@@ -1,6 +1,10 @@
 server:
   port: 8001
 spring:
+  application:
+    name: service-hospital
+  profiles:
+    active: dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -10,3 +14,10 @@ spring:
   mvc:
     path match:
       matching-strategy: ant_path_matcher
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@192.168.23.101:27017/yygh_hosp
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

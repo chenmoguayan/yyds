@@ -2,7 +2,7 @@ server:
   port: 8002
 spring:
   application:
-    name: service_dict
+    name: service-dict
   profiles:
     active: dev
   datasource:
@@ -14,3 +14,26 @@ spring:
   mvc:
     path match:
       matching-strategy: ant_path_matcher
+  redis:
+    # docker 容器端口，需指定docker容器使用linux宿主机的IP
+    # 如果redis是windows安装或linux安装，这里就一般没有问题
+    host: 192.168.23.101
+    # redis 端口
+    port: 6379
+    # redis密码
+    password: 123456
+    # 使用redis的0号数据库
+    database: 0
+    # 超时判定，毫秒
+    timeout: 1800000
+    lettuce:
+      pool:
+        # 最大阻塞等待时间 ， 负数表示没有限制
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

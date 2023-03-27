@@ -1,3 +1,14 @@
-org\hj\yygh\vo\hosp\HospitalSetQueryVo.class
 org\hj\yygh\model\base\BaseEntity.class
+org\hj\yygh\vo\hosp\DepartmentQueryVo.class
+org\hj\yygh\model\hosp\Schedule.class
+org\hj\yygh\model\hosp\Hospital.class
+org\hj\yygh\model\hosp\BookingRule.class
+org\hj\yygh\vo\dict\DictEeVo.class
+org\hj\yygh\model\dict\Dict.class
+org\hj\yygh\model\car\Car.class
+org\hj\yygh\model\hosp\BaseMongoEntity.class
+org\hj\yygh\vo\car\CarVo.class
 org\hj\yygh\model\hosp\HospitalSet.class
+org\hj\yygh\vo\hosp\ScheduleQueryVo.class
+org\hj\yygh\vo\hosp\HospitalSetQueryVo.class
+org\hj\yygh\model\hosp\Department.class
