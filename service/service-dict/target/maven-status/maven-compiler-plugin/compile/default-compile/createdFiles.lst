@@ -1,0 +1,8 @@
+org\hj\yygh\dict\controller\DictController.class
+org\hj\yygh\dict\service\impl\DictServiceImpl.class
+org\hj\yygh\dict\ServiceDictMainApp.class
+org\hj\yygh\dict\config\DictConfig.class
+org\hj\yygh\dict\mapper\DictMapper.class
+org\hj\yygh\dict\listener\DictListener.class
+org\hj\yygh\dict\service\DictService.class
+org\hj\yygh\dict\config\MvcConfig.class
