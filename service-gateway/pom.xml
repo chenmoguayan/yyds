@@ -34,6 +34,12 @@
             <artifactId>spring-cloud-loadbalancer</artifactId>
             <version>3.1.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.hj</groupId>
+            <artifactId>common-util</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

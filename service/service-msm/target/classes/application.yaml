@@ -1,0 +1,28 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: service-msm
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 192.168.23.101
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+aliyun:
+  sms:
+    regionId: default
+    accessKeyId: LTAI5tN6aomjekY7Rd8DKYPx
+    secret: Vr1nfM1DnY87IolNL77nbjwMiNS1sJ

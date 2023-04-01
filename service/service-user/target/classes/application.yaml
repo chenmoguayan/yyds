@@ -1,0 +1,44 @@
+server:
+  # 服务端口
+  port: 8003
+
+# 启动日志
+debug: false
+
+spring:
+  application:
+    name: service-user
+  profiles:
+    active: dev
+
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yygh_user?characterEncoding=utf8&userSSL=false
+    username: root
+    password: root
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ssz
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.23.101
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+mybatis-plus:
+  mapper-locations: classpath:org/hj/yygh/user/mapper/xml/*.xml

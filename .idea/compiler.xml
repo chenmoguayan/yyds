@@ -11,8 +11,10 @@
         <module name="service-car" />
         <module name="common-util" />
         <module name="service-dict-client" />
+        <module name="service-msm" />
         <module name="service-gateway" />
         <module name="service-hospital" />
+        <module name="service-user" />
         <module name="model" />
         <module name="service-util" />
       </profile>
@@ -28,6 +30,8 @@
       <module name="service-dict-client" options="-parameters" />
       <module name="service-gateway" options="-parameters" />
       <module name="service-hospital" options="-parameters" />
+      <module name="service-msm" options="-parameters" />
+      <module name="service-user" options="-parameters" />
       <module name="service-util" options="-parameters" />
     </option>
   </component>
